@@ -40,6 +40,8 @@ console.log(Math.floor(Math.random() * 10));// using floor gave me a fixed numbe
 // console.log(randomNumber);
 //==============
 // didnt work as what i think,
+//=============
+// ok after generating a number in a way or another i have to show an unorderlist for each citie showing the time from 6 am to 7pm and the sales per hour, ya halawa
 
 
 console.log(seattle);
