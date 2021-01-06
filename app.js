@@ -132,8 +132,6 @@ function lastRender() {
 
 
 
-
-
 var seattle = new Location(23, 65, 6.3, 'Seattle')
 console.log(seattle);
 console.log(seattle.calAverCookiePerHour());
@@ -156,3 +154,21 @@ for(var index=0; index<locationArray.length; index++){
     locationArray[index].renderLocationInTable();
 }
 lastRender();
+
+var add = document.getElementById('add');
+add.addEventListener('submit', function(event){
+    event.preventDefault();
+    
+    var min = event.target.min.value
+    var max = event.target.max.value
+    var avg = event.target.average.value
+    var name = event.target.name.value
+
+    var newInput = new Location(min, max, avg, name );
+   
+   lastRender()
+   console.log(newInput);
+});
+
+
+
