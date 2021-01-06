@@ -1,5 +1,6 @@
 'use strict'
-//creating a global hours array and a function to grnerate a random number of customers per hour
+
+
 var hours = ["6:00am", "7:00am", "8:00am", " 9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm"]
 var locationArray = [];
 function randomNumOfCustomers(minimum, maximum) {
@@ -119,8 +120,6 @@ function lastRender() {
         for(var j=0; j<locationArray.length;j++){
             totalLocationPerHour+=locationArray[j].cookiesPerHour[i];
         }
-        
-        //var hourlyTotal = Math.floor(seattle.calAverCookiePerHour()[i] + tokyo.calAverCookiePerHour()[i] + paris.calAverCookiePerHour()[i] + dubai.calAverCookiePerHour()[i] + lima.calAverCookiePerHour()[i]);
         hourDataCell.textContent = totalLocationPerHour;
         tableFinalRow.appendChild(hourDataCell);
         finalTotal += totalLocationPerHour;
