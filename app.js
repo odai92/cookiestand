@@ -162,8 +162,7 @@ add.addEventListener('submit', function(event){
     var max = parseInt(event.target.max.value)
     var avg = parseInt(event.target.average.value)
     var name = event.target.name.value
-
-
+    
     var newInput = new Location(min, max, avg, name );
     console.log(newInput);
 
