@@ -22,7 +22,7 @@ function Location(min, max, average, name) { // and here is our costructre
 
 Location.prototype.numOfCustomers = function () {
     return randomNumOfCustomers(this.minCustomers, this.maxCustomers);
-} // here we generated a random number of customer using the result from each branch by taking the min and max and then return it to the object so it will be use to calculate the avarage cookie sell per hour
+} // here generated a random number of customer using the result from each branch by taking the min and max and then return it to the object so it will be use to calculate the avarage cookie sell per hour
 
 
 
@@ -49,6 +49,7 @@ function createTable() { // a function made to create the table
     article.appendChild(h2);// the h2 was appened child to the article
     // start of the table
     var table = document.createElement('table');// a table was created 
+    table.setAttribute('id','salmonTable')
     article.appendChild(table);// a table is the article child
 }
 
@@ -102,34 +103,6 @@ Location.prototype.renderLocationInTable = function () { // here insirt the loca
     tableSecondRow.appendChild(dailyTotal);
 }
 
-Location.prototype.renderLocationInTable = function(){
-    
-    var parentElement = document.getElementsByTagName('table');
-
-    var tableSecondRow = document.createElement('tr');
-    parentElement[0].appendChild(tableSecondRow);
-    var nameOfLoction = document.createElement('td');
-    nameOfLoction.textContent = this.nameOfLoction;
-    tableSecondRow.appendChild(nameOfLoction);
-
-    this.calAverCookiePerHour();
-
-    for(var i=0; i<hours.length; i++){
-        var tableInfo = document.createElement('td');
-        tableInfo.textContent = this.cookiesPerHour[i];
-        tableSecondRow.appendChild(tableInfo);
-        this.total += this.cookiesPerHour[i];
-    }
-
-    var dailyTotal = document.createElement('td');
-    dailyTotal.textContent = this.total;
-    tableSecondRow.appendChild(dailyTotal);
-
-
-
-}
-
-
 
 
 
@@ -160,7 +133,7 @@ function lastRender() { // in the last render a tr is created and been a total f
 
 
 
-// here comes the fun part, using the constructre new branchs (objects) was created and there properties one by one the min max avg and name
+// using the constructre new branchs (objects) was created and there properties one by one the min max avg and name
 
 var seattle = new Location(23, 65, 6.3, 'Seattle')
 var tokyo = new Location(3, 24, 1.2, 'Tokyo');
@@ -171,8 +144,8 @@ var lima = new Location(2, 16, 4.9, 'Lima');
 // attached to the sales html page to create the table
 createTable(); // the function is called 
 firstHeaderRender(); // calling the function
-for(var index=0; index<locationArray.length; index++){// table content 
-    locationArray[index].renderLocationInTable();
+for(var h=0; h<locationArray.length; h++){// table content 
+    locationArray[h].renderLocationInTable()
 }
 lastRender(); // calling my last render
 
@@ -185,20 +158,29 @@ var add = document.getElementById('add');
 add.addEventListener('submit', function(event){
     event.preventDefault();
     
-    var min = event.target.min.value
-    var max = event.target.max.value
-    var avg = event.target.average.value
+    var min = parseInt(event.target.min.value)
+    var max = parseInt(event.target.max.value)
+    var avg = parseInt(event.target.average.value)
     var name = event.target.name.value
+
 
     var newInput = new Location(min, max, avg, name );
     console.log(newInput);
-   
-   
-   
-   lastRender()  
+
+
+   deleteRow();// table removed
+   newInput.renderLocationInTable();//new input added
+
+   lastRender()  // the hole table is called 
    console.log(add); 
-   addEventListener()
+   
 });
+
+function deleteRow(){// to remove the table in line 171
+    document.getElementById('salmonTable').deleteRow(-1);
+}
+
+
 
 // i have a bug while adding a new branch ,, 
 
